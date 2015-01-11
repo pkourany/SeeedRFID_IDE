@@ -15,9 +15,11 @@ Adapted for Spark Core by Paul Kourany, Jan 2015
 ### Usage
 Connecting RFID Reader RX, TX to Spark Core pins.
 
-Seed    Spark (Serial1 or 2)
-RX <--> TX
-TX <--> RX
+'Seed    Spark (Serial1 or 2)'
+
+'RX <--> TX'
+
+'TX <--> RX'
 
 Arduino
 -------
