@@ -1,0 +1,7 @@
+{
+	"name": "SeeedRFID",
+	"author": "Ye Xiaobo / Paul Kourany",
+	"version": "1.0.0",
+	"license": "MIT License (MIT)",
+	"description": "125Khz RFID library for Arduino adapted for Spark Core"
+}
