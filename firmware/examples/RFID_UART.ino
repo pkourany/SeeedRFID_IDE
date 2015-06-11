@@ -17,6 +17,8 @@ SeeedRFID RFID(RFID_RX_PIN, RFID_TX_PIN);
 RFIDdata tag;
 
 void setup() {
+	Serial1.begin(9600);	//Done here to prevent SeeedRFID constructor system crash
+	
 	Serial.begin(57600);
 	Serial.println("Hello, double bk!");
 }
