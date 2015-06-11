@@ -51,7 +51,7 @@
 #ifndef SeeedRFID_H
 #define SeeedRFID_H
 
-#if defined (SPARK)
+#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6)	//Core or Photon
 #include "application.h"
 #else
 #include <SoftwareSerial.h>
@@ -75,9 +75,7 @@ enum RFIDType
 class SeeedRFID
 {
 private:
-#if defined (SPARK)
-	USARTSerial * _rfidIO; // software serial
-#else
+#if !defined (PLATFORM_ID)
 	SoftwareSerial * _rfidIO; // software serial
 #endif
 	RFIDdata _data;
