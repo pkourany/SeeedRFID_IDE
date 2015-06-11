@@ -12,6 +12,8 @@ Spark Core
 ----------
 Adapted for Spark Core by Paul Kourany, Jan 2015
 
+NOTE: Serial1 must be initialized in setup() using ```Serial1.begin(9600);```.  See the example.
+
 ### Usage
 Connecting RFID Reader RX, TX to Spark Core pins.
 
