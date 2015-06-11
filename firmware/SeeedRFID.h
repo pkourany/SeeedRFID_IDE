@@ -75,7 +75,9 @@ enum RFIDType
 class SeeedRFID
 {
 private:
-#if !defined (PLATFORM_ID)
+#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6)	//Core or Photon
+	USARTSerial * _rfidIO; // software serial
+#else
 	SoftwareSerial * _rfidIO; // software serial
 #endif
 	RFIDdata _data;
