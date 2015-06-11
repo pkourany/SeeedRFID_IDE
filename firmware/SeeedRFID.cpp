@@ -58,7 +58,9 @@
 
 SeeedRFID::SeeedRFID(int rxPin, int txPin)
 {
-#if !defined (PLATFORM_ID)	//Not a Core or Photon
+#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6)	//Core or Photon
+    _rfidIO = &Serial1;		// Select Serial1 or Serial2
+#else
     _rfidIO = new SoftwareSerial(rxPin, txPin);
     _rfidIO->begin(9600);
 #endif
