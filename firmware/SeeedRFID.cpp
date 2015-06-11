@@ -48,7 +48,7 @@
 * ```
 ***************************************************************************/
 
-#if defined (SPARK)
+#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6)	//Core or Photon
 #include "SeeedRFID.h"
 #else
 #include <SoftwareSerial.h>
@@ -58,13 +58,10 @@
 
 SeeedRFID::SeeedRFID(int rxPin, int txPin)
 {
-#if defined (SPARK)
-    _rfidIO = &Serial1;		// Select Serial1 or Serial2
-#else
+#if !defined (PLATFORM_ID)	//Not a Core or Photon
     _rfidIO = new SoftwareSerial(rxPin, txPin);
-#endif
     _rfidIO->begin(9600);
-
+#endif
 	// init RFID data
 	_data.dataLen = 0;
 	_data.chk = 0;
