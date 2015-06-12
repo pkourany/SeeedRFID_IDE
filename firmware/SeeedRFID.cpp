@@ -102,7 +102,7 @@ boolean SeeedRFID::read()
 	while (_rfidIO->available())
 	{
 		_data.raw[_data.dataLen++] = _rfidIO->read();
-#ifdef DEBUG
+#ifdef DEBUGRFID
 	Serial.println("SeeedRFID:read() function, and the RFID raw data: ");
 	for (int i = 0; i < _data.dataLen; ++i)
 	{
@@ -168,7 +168,7 @@ unsigned long SeeedRFID::cardNumber()
 
 	sum = sum + sum2;
 
-#ifdef DEBUG
+#ifdef DEBUGRFID
 	Serial.print("cardNumber(HEX): ");
     Serial.println(sum, HEX);
 	Serial.print("cardNumber: ");
