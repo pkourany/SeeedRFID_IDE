@@ -10,7 +10,7 @@
 #define RFID_RX_PIN 10
 #define RFID_TX_PIN 11
 
-// #define DEBUG
+// #define DEBUGRFID
 #define TEST
 
 SeeedRFID RFID(RFID_RX_PIN, RFID_TX_PIN);
