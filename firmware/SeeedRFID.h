@@ -51,7 +51,7 @@
 #ifndef SeeedRFID_H
 #define SeeedRFID_H
 
-#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6)	//Core or Photon
+#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6) || (PLATFORM_ID == 8) || (PLATFORM_ID == 10)	// Core or Photon or P1 or Electron
 #include "application.h"
 #else
 #include <SoftwareSerial.h>
