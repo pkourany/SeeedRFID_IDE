@@ -1,6 +1,6 @@
 // RFID_UART.ino
 
-#if defined (SPARK)
+#if defined (PLATFORM_ID)
 #include "SeeedRFID/SeeedRFID.h"
 #else
 #include <SoftwareSerial.h>
