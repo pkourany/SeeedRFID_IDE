@@ -48,7 +48,8 @@
 * ```
 ***************************************************************************/
 
-#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6) || (PLATFORM_ID == 8) || (PLATFORM_ID == 10)	// Core or Photon or P1 or Electron
+// Core, Photon, P1, Electron, Readbear Duo
+#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6) || (PLATFORM_ID == 8) || (PLATFORM_ID == 10) || (PLATFORM_ID == 88)
 #include "SeeedRFID.h"
 #else
 #include <SoftwareSerial.h>
@@ -58,7 +59,8 @@
 
 SeeedRFID::SeeedRFID(int rxPin, int txPin)
 {
-#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6) || (PLATFORM_ID == 8) || (PLATFORM_ID == 10)	// Core or Photon or P1 or Electron
+// Core, Photon, P1, Electron, Readbear Duo
+#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6) || (PLATFORM_ID == 8) || (PLATFORM_ID == 10) || (PLATFORM_ID == 88)
     _rfidIO = &Serial1;		// Select Serial1 or Serial2
 #else
     _rfidIO = new SoftwareSerial(rxPin, txPin);
