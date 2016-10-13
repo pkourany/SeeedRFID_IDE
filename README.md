@@ -5,17 +5,18 @@ RFID Library
 
 This library only support TTL RS232 serial port.
 
-![125Khz RFID Reader][RFID Image]
 
 
-Spark Core
-----------
+Particle Devices
+---------------
+Adapted to include Particle Photon, Electron and Redbear Duo by Paul Kourany, Oct 2016
+
 Adapted for Spark Core by Paul Kourany, Jan 2015
 
 NOTE: Serial1 must be initialized in setup() using ```Serial1.begin(9600);```.  See the example.
 
 ### Usage
-Connecting RFID Reader RX, TX to Spark Core pins.
+Connecting RFID Reader RX, TX to Particle/Redbear pins.
 
 ```
 Seed    Spark (Serial1 or 2)
