@@ -1,24 +1,20 @@
 // RFID_UART.ino
 
-#if defined (PLATFORM_ID)
-#include "SeeedRFID/SeeedRFID.h"
-#else
-#include <SoftwareSerial.h>
-#include <SeeedRFID.h>
+#if !defined (PARTICLE)
+  #include <SoftwareSerial.h>
 #endif
+#include <SeeedRFID.h>
 
 #define RFID_RX_PIN 10
 #define RFID_TX_PIN 11
 
-// #define DEBUGRFID
+// #define DEBUG
 #define TEST
 
-SeeedRFID RFID(RFID_RX_PIN, RFID_TX_PIN);
+SeeedRFID RFID(RFID_RX_PIN, RFID_TX_PIN);	// Serial1 used for Particle
 RFIDdata tag;
 
 void setup() {
-	Serial1.begin(9600);	//Done here to prevent SeeedRFID constructor system crash
-	
 	Serial.begin(57600);
 	Serial.println("Hello, double bk!");
 }

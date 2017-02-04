@@ -5,24 +5,20 @@ RFID Library
 
 This library only support TTL RS232 serial port.
 
+![125Khz RFID Reader][RFID Image]
 
 
 Particle Devices
----------------
-Adapted to include Particle Photon, Electron and Redbear Duo by Paul Kourany, Oct 2016
-
+----------
 Adapted for Spark Core by Paul Kourany, Jan 2015
-
-NOTE: Serial1 must be initialized in setup() using ```Serial1.begin(9600);```.  See the example.
+Updated for Libraries 2.0, Feb 2017
 
 ### Usage
-Connecting RFID Reader RX, TX to Particle/Redbear pins.
+Connecting RFID Reader RX, TX to Particle device Core pins.
 
-```
-Seed    Spark (Serial1 or 2)
-RX <--> TX
-TX <--> RX
-```
+`Seed    Spark (Serial1 or 2)`
+`RX <--> TX`
+`TX <--> RX`
 
 Arduino
 -------
@@ -55,36 +51,25 @@ that your data  : 00 91 6f 0b f5
 |  | |	----|W0		BEEP|----
 |  | |	----|W1		 GND|----
 |  | |		+-----------+
-|  | \___________________________________
-|  |_____________________________        |
-|                                |       |
-|                              + + + + + + + +  + + + + + + + +
-|                              | | | | | | | |  | | | | | | | |
-|                              | | | | | | | |  | | | | | | | |
-|            +-----------------|-|-|-|-|-|-|-|--|-|-|-|-|-|-|-|-+
-|            |                 x-x-x-x-x-x-x-x  x-x-x-x-x-x-x-x |
-|            |              xxx                                 |
-|       +--------+          xxx    --- ---    .............     |
-|       |        |                | - x + |  ' |  ||\ |.-. '    +
-|       |        |          ^      --- ---   | |__|| \|._. |     x
-|       |        |        <+++>    ARDUINO   '.............'      +
-|       +--------+          V                                     |
-|            |            _____                       ++-++   xx  |
-|            |           <_____>                      +-O-+   xx  |
-|            |                                        ++-++   xx  |
-|            |+--++--                                             |
-|            ||||++--                  +---------------------+    |
-|            |+--++--                  |                     |    |
-|            |                         |                     |    |
-|         ++------+                    +---------------------+    |
-|         ++      |                                               +
-|         ++      |          +-+ +-+                             x
-|         ++------+          +-+ +-+   x-x-x-x-x-x x-x-x-x-x-x  +
-|            +-------------------------|-|-|-|-|-|-|-|-|-|-|-|--+
-|                                      | | | | | | | | | | | |
-|                                      | | | | | | | | | | | |
-|                                      + + + + + + + + + + + +
-|____________________________________________|
+|  | \_________________________________________
+|  | 										  |
+|  |                             			  |
+|  |                           + + + + + + + + + + + + 
+|  |                           | | | | | | | | | | | | 
+|  |          				  /|-|-|-|-|-|-|-|-|-|-|-|-|
+|  |                         | A A A A A A D W R T G V |
+|  |                         | 0 1 2 3 4 5 A K X X N I |      
+|  |               PARTICLE  |             C P     D N |
+|  |                PHOTON   |                		   |
+|  |                         |                	 V	   |
+|  |                         |                 G B R 3 |
+|  |                         | D D D D D D D D N A S V |
+|  |       					 | 0 1 2 3 4 5 6 7 D T T 3 |
+|  |          				  \|-|-|-|-|-|-|-|-|-|-|-|-|
+|  |                           | | | | | | | | | | | | 
+|  |                           + + + + + + + + + + + + 
+|  |___________________________________________|     |
+|____________________________________________________|
 	
 ```
 

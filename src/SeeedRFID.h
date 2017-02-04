@@ -51,9 +51,8 @@
 #ifndef SeeedRFID_H
 #define SeeedRFID_H
 
-// Core, Photon, P1, Electron, Readbear Duo
-#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6) || (PLATFORM_ID == 8) || (PLATFORM_ID == 10) || (PLATFORM_ID == 88)
-#include "application.h"
+#if defined (PARTICLE)
+#include "Particle.h"
 #else
 #include <SoftwareSerial.h>
 #include "Arduino.h"
@@ -76,10 +75,10 @@ enum RFIDType
 class SeeedRFID
 {
 private:
-#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6) || (PLATFORM_ID == 8) || (PLATFORM_ID == 10) || (PLATFORM_ID == 88)
-	USARTSerial * _rfidIO; // software serial
+#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6) || (PLATFORM_ID == 8) || (PLATFORM_ID == 10) || (PLATFORM_ID == 88)	//Core, Photon, P1, Electron or Redbear
+	USARTSerial * _rfidIO; 		// hardware serial
 #else
-	SoftwareSerial * _rfidIO; // software serial
+	SoftwareSerial * _rfidIO;	// software serial
 #endif
 	RFIDdata _data;
 	boolean _isAvailable;

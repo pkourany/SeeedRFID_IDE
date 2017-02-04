@@ -48,24 +48,23 @@
 * ```
 ***************************************************************************/
 
-// Core, Photon, P1, Electron, Readbear Duo
-#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6) || (PLATFORM_ID == 8) || (PLATFORM_ID == 10) || (PLATFORM_ID == 88)
-#include "SeeedRFID.h"
+#if defined (PARTICLE)
+ #include "SeeedRFID.h"
 #else
-#include <SoftwareSerial.h>
-#include "SeeedRFID.h"
-#include "Arduino.h"
+ #include <SoftwareSerial.h>
+ #include "SeeedRFID.h"
+ #include "Arduino.h"
 #endif
 
 SeeedRFID::SeeedRFID(int rxPin, int txPin)
 {
-// Core, Photon, P1, Electron, Readbear Duo
-#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6) || (PLATFORM_ID == 8) || (PLATFORM_ID == 10) || (PLATFORM_ID == 88)
-    _rfidIO = &Serial1;		// Select Serial1 or Serial2
+#if (PLATFORM_ID == 0) || (PLATFORM_ID == 6) || (PLATFORM_ID == 8) || (PLATFORM_ID == 10) || (PLATFORM_ID == 88)	//Core, Photon, P1, Electron or Redbear
+    _rfidIO = &Serial1;		// Serial1 for Particle
 #else
     _rfidIO = new SoftwareSerial(rxPin, txPin);
     _rfidIO->begin(9600);
 #endif
+
 	// init RFID data
 	_data.dataLen = 0;
 	_data.chk = 0;
@@ -81,7 +80,7 @@ SeeedRFID::~SeeedRFID()
 
 boolean SeeedRFID::checkBitValidationUART()
 {
-	if( (5 == _data.dataLen) && (_data.raw[4] == _data.raw[0]^_data.raw[1]^_data.raw[2]^_data.raw[3]))
+	if( 5 == _data.dataLen && (_data.raw[4] == _data.raw[0]^_data.raw[1]^_data.raw[2]^_data.raw[3]))
 	{
 		_data.valid = _isAvailable = true;
 		return true;
@@ -104,7 +103,7 @@ boolean SeeedRFID::read()
 	while (_rfidIO->available())
 	{
 		_data.raw[_data.dataLen++] = _rfidIO->read();
-#ifdef DEBUGRFID
+#ifdef DEBUG
 	Serial.println("SeeedRFID:read() function, and the RFID raw data: ");
 	for (int i = 0; i < _data.dataLen; ++i)
 	{
@@ -170,7 +169,7 @@ unsigned long SeeedRFID::cardNumber()
 
 	sum = sum + sum2;
 
-#ifdef DEBUGRFID
+#ifdef DEBUG
 	Serial.print("cardNumber(HEX): ");
     Serial.println(sum, HEX);
 	Serial.print("cardNumber: ");
